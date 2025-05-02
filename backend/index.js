@@ -12,6 +12,9 @@ app.use(bodyParser.json());
 
 app.use('/api/employees', EmployeeRoutes);
 
+app.get('/', (req, res) => {
+    res.send('Employee Management API is running');
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running on PORT: ${PORT}`);
