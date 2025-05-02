@@ -8,7 +8,8 @@ function EmployeeTable({
     employees, pagination,
     fetchEmployees, handleUpdateEmployee }) {
     const headers = ['Name', 'Email', 'Phone', 'Department', 'Actions'];
-    const { currentPage, totalPages } = pagination;
+    const { currentPage = 1, totalPages = 1 } = pagination || {};
+
 
     const handleNextPage = () => {
         if (currentPage < totalPages) {
@@ -86,13 +87,15 @@ function EmployeeTable({
                     </tr>
                 </thead>
                 <tbody>
-                    {
-                        employees.length === 0 ? <div> Data Not Found</div>
-                            : employees.map((emp) => (
-                                <TableRow employee={emp} key={emp._id} />
-                            ))
-                    }
-                </tbody>
+  {employees.length === 0 ? (
+    <tr><td colSpan={headers.length} className="text-center">No Data Found</td></tr>
+  ) : (
+    employees.map((emp) => (
+      <TableRow employee={emp} key={emp._id} />
+    ))
+  )}
+</tbody>
+
             </table>
 
             <div className="d-flex justify-content-between align-items-center my-3">
