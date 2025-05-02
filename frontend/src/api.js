@@ -1,5 +1,6 @@
 const BASE_URL = 'https://employee-management-app-fqz2.onrender.com';
 
+
 export const GetAllEmployees = async (search = '', page = 1, limit = 5) => {
     const url =
         `${BASE_URL}/api/employees?search=${search}&page=${page}&limit=${limit}`;
